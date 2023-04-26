@@ -1,0 +1,12 @@
+.card {
+  width: 250px;
+}
+.rate {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin-left: -20px;
+}
+.card:hover {
+  border: 2px solid blue;
+}
