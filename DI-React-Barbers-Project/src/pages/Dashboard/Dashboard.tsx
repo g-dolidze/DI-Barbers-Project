@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./Dashboard.css";
 import Card from "../Card";
+import { Link } from "react-router-dom";
 
 const Dashboard = () => {
   const [data, setData] = useState<BarberItem[]>([
@@ -27,7 +28,10 @@ const Dashboard = () => {
 
   return (
     <div className="all">
-      <h1>Barbers</h1>
+      <div className=" header">
+        <h1>Barbers</h1>
+        <Link to={"/login"}> Log in</Link>
+      </div>
       <div className="page">
         {data.map((barber) => {
           return <Card barber={barber} />;

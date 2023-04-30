@@ -16,11 +16,11 @@ import Profile from "./components/StyledMUI/Profile";
 import { isUserAuthenticated } from "./utils/helpers";
 
 function App() {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
-  useEffect(() => {
-    if (!isUserAuthenticated()) navigate("/login");
-  }, [isUserAuthenticated()]);
+  // useEffect(() => {
+  //   if (!isUserAuthenticated()) navigate("/login");
+  // }, [isUserAuthenticated()]);
 
   return (
     <Box

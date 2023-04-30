@@ -1,10 +1,18 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import { useFormik } from "formik";
 import { Link } from "react-router-dom";
+import { Paper, Typography, Grid, Button, TextField } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 import "./Profil.css";
+import Comment from "../../Comments";
+type value = {
+  comment: string;
+};
 
 function profile() {
   const [barber, setBarber] = useState<BarberItem>({});
+  const [value, setValue] = useState<value>({ comment: "" });
 
   const { id } = useParams();
 
@@ -12,7 +20,7 @@ function profile() {
     async function fetchData() {
       const response = await fetch(`/data.json`);
       const json = await response.json();
-      const barber = json.find((barber) => barber.id === id);
+      const barber = json.find((barber: BarberItem) => barber.id === id);
       setBarber(barber);
     }
 
@@ -31,18 +39,19 @@ function profile() {
         <h2>Score:{barber.rating}</h2>
         <h2>Price: {barber.price}$</h2>
       </div>
+      <Comment />
       <div>
         <h3>reviews:</h3>
         {barber.review?.map((review) => {
           return (
-            <div className="review">
-              <p className="comment">
-                <span>
-                  {review.author}: "{review.comment}"
-                </span>
-                <span>rate:{review.score} </span>
-              </p>
-            </div>
+            <Grid className="review">
+              <Paper>
+                <Typography margin={5}>
+                  {review.author}:"{review.comment} "
+                </Typography>
+                <Typography>rate: {review.score}</Typography>
+              </Paper>
+            </Grid>
           );
         })}
       </div>

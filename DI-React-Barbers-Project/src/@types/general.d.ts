@@ -19,3 +19,4 @@ type BarberItem = {
   description: string;
   price: number;
 };
+
